@@ -1,21 +1,30 @@
-import { StyleSheet, Text, View, TextInput, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, ScrollView, ImageBackground, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import citiesActions from "../redux/actions/citiesActions"
 import itinerariesActions from '../redux/actions/itinerariesActions'
 import Itinerary from '../components/Itinerary'
 import Footer from '../components/Footer'
 
 const City = (props) => {
+     const [loader, setLoader] = useState (true)
     useEffect(()=> {
         let listener = props.navigation.addListener('focus', ()=> {
             props.getOneCity(props.route.params.id)
             props.getItinerariesPerCity(props.route.params.id)
+            setLoader(false)
         })
        return()=>{
            props.navigation.removeListener(listener)
        }
     }, [])
+     if(loader){
+        return(
+                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <ActivityIndicator size="large" color="#3fced3"/>
+                </View>
+        
+        )}
     const itineraryCards =props.itineraries.length === 0 
     ?  <ImageBackground style={styles.noItineraries} source={require('../assets/backNo.png')} resizeMode="cover"><Text style={{color:'#999696', fontFamily:'Ubuntu_700Bold', fontSize:20, textAlign:'center', marginTop:5}}>Oh no!</Text><Text style={{color:'#999696', fontFamily:'Ubuntu_700Bold', fontSize:20, textAlign:'center'}}> We don't have any itineraries yet!</Text></ImageBackground>
     : props.itineraries.map((itineraryData) =><Itinerary data={itineraryData} key={itineraryData._id}/>)

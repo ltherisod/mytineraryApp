@@ -11,7 +11,8 @@ import rootReducer from './redux/reducers/rootReducer'
 import thunk from 'redux-thunk'
 import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
-
+import { LogBox } from "react-native"
+LogBox.ignoreAllLogs(true)
 
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView, Image, TextInput } from "react-native"
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, ActivityIndicator } from "react-native"
 import {connect} from "react-redux"
 import citiesActions from "../redux/actions/citiesActions"
 import CardCity from '../components/CardCity'
@@ -27,7 +27,7 @@ const Cities = (props) => {
     if(loader){
         return(
                 <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <Image style={{width:50, height:50, alignSelf:'center'}} source={require('../assets/sky-2-unscreen.gif')}/> 
+                    <ActivityIndicator size="large" color="#3fced3"/>
                 </View>
         
         )}

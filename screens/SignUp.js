@@ -3,6 +3,7 @@ import SelectDropdown from 'react-native-select-dropdown'
 import React, {useState } from "react"
 import { connect } from 'react-redux'
 import userActions from '../redux/actions/userActions'
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 
 const SignUp = (props) => {
     const countries = ["Egypt", "Canada", "Australia", "Ireland", "Argentina", "Colombia", "Peru","United States", "Chile", "China", "Japan", "Pakistan", "Colombia", "Uruguay", "Cuba",  ]
@@ -50,7 +51,13 @@ console.log(newUser)
                     <TextInput style={styles.input} placeholder="Email" onChange={(e) => setNewUser({...newUser, email:e.nativeEvent.text})}/>
                     <TextInput style={styles.input} placeholder="Picture Url" onChange={(e) => setNewUser({...newUser, profilePhoto:e.nativeEvent.text})}/>
                     <TextInput style={styles.input} secureTextEntry={true} placeholder="Password" onChange={(e) => setNewUser({...newUser, password:e.nativeEvent.text})}/>
-                    <SelectDropdown style={styles.inputSelect} data={countries} onSelect={(selectedItem) => setNewUser({...newUser, country:selectedItem})} buttonTextAfterSelection={(selectedItem, index) => {return selectedItem}} rowTextForSelection={(item, index) => {return item}} onValueChange={(e) => userHandler(e, "country")}/>
+                    <SelectDropdown style={styles.inputSelect} data={countries} defaultButtonText={"Select your country"} buttonStyle={styles.dropdown1BtnStyle}  buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                    renderDropdownIcon={() => {
+                      return (
+                        <FontAwesome name="chevron-down" color={"black"} size={15} />
+                      )
+                    }}
+                    dropdownIconPosition={"right"} onSelect={(selectedItem) => setNewUser({...newUser, country:selectedItem})} buttonTextAfterSelection={(selectedItem, index) => {return selectedItem}} rowTextForSelection={(item, index) => {return item}} onValueChange={(e) => userHandler(e, "country")}/>
                     <TouchableOpacity style={styles.button} activeOpacity={.7} onPress={sendFormHandler}> 
                          <Text style={styles.text}>Sign Up</Text>
                     </TouchableOpacity>
@@ -132,6 +139,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.2,
         color: 'grey'
+    },
+    dropdown1BtnStyle:{
+        height: 40,
+        width: 260,
+        margin: 9,
+        padding: 10,
+        borderRadius: 2,
+        borderColor: "#dad8d8",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor:'white'
     }
     
 })
