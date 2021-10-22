@@ -4,7 +4,7 @@ Mytinerary es una mobile app en donde viajeros publican sus itinerarios y los us
 
 
 
- ![image](frontend/public/assets/mytineraryapp.gif)
+ ![image](assets/mytineraryapp.gif)
 
 
 
