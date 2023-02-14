@@ -36,10 +36,7 @@ Este proyecto fue realizado por las siguientes tecnologías
 * [Joi](https://www.npmjs.com/package/joi) - usada para la validación de formularios
 
 
-## Expresiones de Gratitud 💗
 
-Se agradece a Fernando Biaus por la mentoría y  dedicación. <br/>
-También a Mindhub por la oportunidad de crecer como developers.
 
 
  ### Desarrollado por  [Laura Therisod](https://github.com/ltherisod/) 😊
